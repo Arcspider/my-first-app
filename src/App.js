@@ -23,8 +23,7 @@ function App() {
       height: '100%',
       top: '-15%',
     }}>
-    <p>Hello 02363 class</p>
-      Counter App
+    Hello 02363 class
       <div style={{
         fontSize: '120%',
         position: 'relative',
