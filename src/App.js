@@ -1,60 +1,26 @@
-import React, { useState } from "react";
-import './App.css';
+import { useState } from 'react'
 
-function App() {
-  const [counter, setCounter] = useState(0)
-  const handleClick1 = () => {
-    setCounter(counter + 1)
-  }
-  
-  const handleClick2 = () => {
-    setCounter(counter - 1)
-  }
-  
+const App = () => {
+  const [persons, setPersons] = useState([
+    { name: 'Arto Hellas' }
+  ]) 
+  const [newName, setNewName] = useState('')
+
   return (
-    <div style={{
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      fontSize: '300%',
-      position: 'absolute',
-      width: '100%',
-      height: '100%',
-      top: '-15%',
-    }}>
-    Hello 02363 class
-      <div style={{
-        fontSize: '120%',
-        position: 'relative',
-        top: '10vh',
-      }}>
-        {counter}
-      </div>
-      <div className="buttons">
-        <button style={{
-          fontSize: '60%',
-          position: 'relative',
-          top: '20vh',
-          marginRight: '5px',
-          backgroundColor: 'green',
-          borderRadius: '8%',
-          color: 'white',
-        }}
-          onClick={handleClick1}>Increment</button>
-        <button style={{
-          fontSize: '60%',
-          position: 'relative',
-          top: '20vh',
-          marginLeft: '5px',
-          backgroundColor: 'red',
-          borderRadius: '8%',
-          color: 'white',
-        }}
-          onClick={handleClick2}>Decrement</button>
-      </div>
+    <div>
+      <h2>Phonebook</h2>
+      <form>
+        <div>
+          name: <input />
+        </div>
+        <div>
+          <button type="submit">add</button>
+        </div>
+      </form>
+      <h2>Numbers</h2>
+      ...
     </div>
   )
 }
 
-export default App;
+export default App
