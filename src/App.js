@@ -1,24 +1,73 @@
 import { useState } from 'react'
 
+import React from 'react'
+
+function findPerson(arr, person) {
+  return arr.find((element) => {
+    return element.name === person;
+  })
+}
+
+
 const App = () => {
   const [persons, setPersons] = useState([
-    { name: 'Arto Hellas' }
-  ]) 
+    { name: 'Arto Hellas', number: '040-123456', id: 1 },
+    { name: 'Ada Lovelace', number: '39-44-5323523', id: 2 },
+    { name: 'Dan Abramov', number: '12-43-234345', id: 3 },
+    { name: 'Mary Poppendieck', number: '39-23-6423122', id: 4 }
+  ])
   const [newName, setNewName] = useState('')
+  const [newNumber, setNewNumber] = useState('')
+
+  const handleNameChange = (event) => {
+    setNewName(event.target.value)
+  }
+  const handleNumberChange = (event) => {
+    setNewNumber(event.target.value)
+  }
+
+  const addPerson = (event) => {
+    event.preventDefault()
+    if (findPerson(persons, newName)) {
+      window.alert(`${newName} is already in the phonebook`)
+    } else {
+      const personObject = {
+        name: newName,
+        phone: newNumber
+      }
+
+      setPersons(persons.concat(personObject))
+    }
+    setNewName('')
+    setNewNumber('')
+  }
+
 
   return (
     <div>
-      <h2>Phonebook</h2>
+      <h1>Phonebook</h1>
+      <h2>Add Person</h2>
       <form>
         <div>
-          name: <input />
+          name: <input value={newName} onChange={handleNameChange} />
         </div>
         <div>
-          <button type="submit">add</button>
+          number: <input value={newNumber} onChange={handleNumberChange} />
         </div>
+        <div>
+          <button type="submit" onClick={addPerson} >add</button>
+        </div>
+
       </form>
       <h2>Numbers</h2>
-      ...
+      <div>
+        {persons.map((item)=>(
+          <>
+          <p key={item.id}>{item.name}, {item.number}</p>
+          </>
+        ))}
+      </div>
+
     </div>
   )
 }
