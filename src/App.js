@@ -18,7 +18,7 @@ const App = () => {
   ])
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
-  const [showAll, setShowAll] = useState(true)
+  const [showAll, setShowAll] = useState('')
 
   const handleNameChange = (event) => {
     setNewName(event.target.value)
@@ -30,8 +30,8 @@ const App = () => {
     setShowAll(event.target.value)
   }
   const peopleToShow = showAll    
-    ? persons    
-    : persons.filter(person => person.name === showAll)
+    ? persons.filter(person => person.name.toLowerCase().match(showAll))    
+    : persons
 
   const addPerson = (event) => {
     event.preventDefault()
